@@ -1,5 +1,6 @@
 # LD4All Target Ontology and LD4L-O / BIBFRAME version 2 Alignment Recommendations
 **LD4All Ontology Alignment Sprint Working Group, Summer 2016**
+
 **For Review by the LD4All Ontology Alignment Working Group**
 
 **This is a _draft_. It is being written, reviewed, maintained and updated by a working group comprised of members from both the [Linked Data for Libraries Labs and the Linked Data for Production projects](https://www.ld4l.org/).**
