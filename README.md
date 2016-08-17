@@ -7,11 +7,15 @@
 
 ## About This Recommendation
 
+Being written.
 
 ## LD4All Target Ontology
 
+Being written.
 
 ## LD4All Recommendation Principles and Patterns
+
+Being written.
 
 ### Principles
 
@@ -38,7 +42,7 @@
 
 ## Patterns Retained from BIBFRAME 2
 
-
+Being written.
 
 ## LD4All Extensions (In Progress) and Future Work Areas
 
