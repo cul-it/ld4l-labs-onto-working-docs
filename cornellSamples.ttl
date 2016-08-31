@@ -1,0 +1,42 @@
+@prefix bf: <http://bibframe.org/vocab/> .
+@prefix ld4l: <> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lexco: <http://lexvo.org/id/iso639-3/> .
+
+<http://ld4l.org/resources/cornell/102063> a bf:Text ;
+    bf:hasInstance <http://ld4l.org/resources/cornell/102063/instance1> ;
+    bf:issuance ld4l:Monograph ;
+    owl:sameAs http://lccn.loc.gov/56010158/L ;
+    bf:identifiedBy :id1, :id2, :id3 ;
+    bf:classification :class1 ;
+    bf:classification :class3 ;
+    ld4l:hasPreferredTitle :title1 .
+
+<http://ld4l.org/resources/cornell/102063/instance1> a bf:Instance ;
+    bf:classification :class 2 ;
+    bf:responsibilityStatement "Sponsored by the American College of Chest Physicians. Editorial board: Burgess L. Gordon, chairman, editor-in-chief, Albert H. Andrews [and others]" .
+
+:id1 a bf:Identifier ;
+    bf:source “OCoLC” ;
+    rdf:value “1345399” .
+:id2 a bf:Identifier ;
+    bf:source "CStRLIN" ;
+    rdf:value "NYCX86B63464" .
+:id3 a bf:Identifier ;
+    bf:source "NIC" ;
+    rdf:value "notisAAL3258" .
+:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion "RC941" .
+:class2 a bf:ClassificationLcc ;
+    bf:classificationPortion "RC941" ;
+    bf:itemPortion ".C6" .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion "616.2" .
+:title1 a madsrdf:Title ;
+    rdfs:label “Clinical cardiopulmonary physiology” ;
+    dcterms:language lexvo:eng .
+

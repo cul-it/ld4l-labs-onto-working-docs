@@ -47,7 +47,6 @@ Being written.
 ## LD4All Extensions (In Progress) and Future Work Areas
 
 - Art Objects Ontology Extension
-- Audiovisual Ontology Extension
 - Cartographic Resources Ontology Extension
 - Moving Image Ontology Extension
 - Performed Music Ontology Extension
@@ -59,8 +58,7 @@ Being written.
 - LD4All Target Ontology Application Profile
  - human readable and machine actionable forms aimed for
 - MARC21 to BIBFRAME version 2 and to LD4All Target Ontology Mapping
- 
+
 ## How to Contribute & License
 
 Being written.
-
