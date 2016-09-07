@@ -41,7 +41,7 @@ Below are the various recommendation documents being written, reviewed, and disc
 - Serials and Other Complex Works
 - Titles
 
-### Patterns Probably to be Retained from BIBFRAME 2
+### Patterns Probably to be Used from BIBFRAME 2
 
 Being written.
 

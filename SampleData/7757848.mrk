@@ -1,0 +1,27 @@
+=LDR  01397cpcaa2200325|a 4500
+=001  7757848
+=005  20150102105315.0
+=008  120720s1872\\\\nyu\\\\\\\\\\\\\\\\\eng\d
+=035  \\$a(OCoLC)801199450
+=035  \\$a7757848
+=040  \\$aNIC$cNIC$edacs
+=099  \9$a198m
+=100  1\$aDouglass, Frederick,$d1818-1895.
+=245  00$aFrederick Douglass letter to Charles J. Langdon,$f15 August 1872.
+=300  \\$a1 item.
+=520  \\$aLetter to Mr. Langdon about President Grant's failure to invite him to dinner.
+=520  8\$aBackground information from The Life and Writings of Frederick Douglass, Vol. IV, Reconstruction and After, by Philip S. Foner, New York: International Publishers, 1955.
+=546  \\$aIn English.
+=524  \\$aFrederick Douglass Letter to Charles J. Langdon, #198m. Division of Rare and Manuscript Collections, Cornell University Library.
+=600  10$aLangdon, Charles J.
+=600  10$aGrant, Ulysses Simpson,$d1822-1885.
+=651  \0$aUnited States$xPolitics and government,$y1865-1877.
+=600  17$aGrant, Ulysses Simpson,$d1822-1885$2fast/NIC/NAC
+=600  17$aLangdon, Charles J.$2fast/NIC/NAC
+=648  \7$a1865 - 1877$2fast
+=650  \7$aPolitical science$2fast$0(OCoLC)fst01069781
+=651  \7$aUnited States$2fast$0(OCoLC)fst01204155
+=948  0\$a20120720$bi$dee11$ermc$h?
+=948  1\$a20120720$bo$dee11$ermc
+=948  2\$a20150102$bm$dbatch$elts$xaddfast
+

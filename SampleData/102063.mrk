@@ -1,0 +1,24 @@
+=LDR  01033cam a22002891  4500
+=001  102063
+=005  20141019191704.0
+=008  860506s1957\\\\nyua\\\\\b\\\\000\0\eng\\
+=010  \\$a   56010158/L 
+=035  \\$a(CStRLIN)NYCX86B63464
+=035  \\$a(NIC)notisAAL3258
+=035  \\$a(OCoLC)1345399
+=035  \\$a102063
+=040  \\$cNIC$dNIC
+=050  0\$aRC941$b.C6
+=082  \\$a616.2
+=245  00$aClinical cardiopulmonary physiology.$cSponsored by the American College of Chest Physicians.  Editorial board: Burgess L. Gordon, chairman, editor-in-chief, Albert H. Andrews [and others]
+=260  \\$aNew York,$bGrune & Stratton,$c1957.
+=300  \\$a759 p.$billus.$c27 cm.
+=504  \\$aIncludes bibliography.
+=650  \0$aChest$xDiseases
+=650  \7$aChest$xDiseases$2fast$0(OCoLC)fst00853831
+=700  1\$aGordon, Burgess L.$q(Burgess Lee),$d1892-$eed.
+=710  2\$aAmerican College of Chest Physicians.
+=905  \\$a19880603120000.0
+=948  2\$a20141019$bm$dbatch$elts$xaddfast
+=950  \\$lVET$aRB113$b.C64$fBASIC$i05/06/86 N
+

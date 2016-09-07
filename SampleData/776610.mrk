@@ -1,0 +1,27 @@
+=LDR  01237cam a22003251  4500
+=001  776610
+=005  20160509043608.0
+=008  820929r1962\\\\nyua\\\\\\\\\\000\0\eng\\
+=010  \\$a   62015336/L/r81 
+=035  \\$a(CStRLIN)NYCX82B70127
+=035  \\$a(NIC)notisADH6899
+=035  \\$a(OCoLC)542270
+=035  \\$a776610
+=040  \\$dNIC
+=050  0\$aQC21$b.R4 1962
+=082  \\$a530
+=100  1\$aResnick, Robert,$d1923-
+=245  10$aPhysics for students of science and engineering$c[by] David Halliday [and] Robert Resnick.
+=250  \\$aCombined ed.
+=260  \\$aNew York,$bWiley$c[1962]
+=300  \\$a1122, 55 p.$billus.$c25 cm.
+=500  \\$aFirst published in 2 v. with authors' names in reverse order in v. 1.
+=500  \\$aPt. I: 1st ed.; pt. II: 2d ed.
+=650  \0$aPhysics.
+=650  \7$aPhysics.$2fast$0(OCoLC)fst01063025
+=700  1\$aHalliday, David,$d1916-2010.
+=905  \\$a19940414120000.0
+=948  2\$a20160509$bm$dbatch$elts$xWorldShare
+=950  \\$lMANN$aQC21$b.R43 1962$fBASIC$i06/24/87 N$h01/12/87 N
+=950  \\$lPHYSC$aQC21$b.R43 1962$n\Includes the authors' Supplemental problems and odd-numbered answers for Physics for students of science and engineering\$fBASIC$i06/24/87 N ?24:rsl$h07/03/86 N ?24:rsl
+
