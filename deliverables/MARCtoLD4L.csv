@@ -1,0 +1,399 @@
+MARC Field(s),MARC Field(s) Name,MARC Indicator(s),MARC Subfield(s),MARC Content Standard (if applicable for mapping differences),LD4L/BF2 Fragment,Convertor Normalization Required,MARC Obligation,MARC Expected Value,Conversion Notes
+,,# = Empty (in some MARC serializations represented as '#'),,,":w1 == bf:Work instance, :in1 == bf:Instance instance, :it1 == bf:Item instance. # == # or Empty.",,,,
+001,Control Number,--,--,--,"bf:Work URI path, i.e. <http://ld4l.org/resources/cornell/1234567> Presuming for the sake of this conversion spec that the following structure: related bf:Instance URIs would be <http://ld4l.org/resources/cornell/1234567/instance1> (last number to change for instance identifiers or system settings), related bf:Item URIs would be <http://ld4l.org/resources/cornell/1234567/instance1/item1> (same note about item identifiers / system settings as with instances).",n/a,"{1,1}","12 characters, either digits or # character.","Control number i.e. record identifier within the originating system. Pairs with the 003, which gives the system originating the control number."
+LDR00-04,Record length,--,--,--,--,--,"{1,1}",5 integers.,Ignore.
+LDR05,Record status,--,--,--,--,--,"{1,1}",Letter code.,"Ignore, unless we don't want to convert deleted records."
+LDR06,Type of record,--,--,--,"bf:Work subclass (:w1 a) applied to resource, following this mapping:
+a = bf:Text
+c = bf:NotatedMusic
+d = bf:NotatedMusic, create related bf:Instance and type bf:Manuscript
+e = bf:Cartography
+f = bf:Cartography, create related bf:Instance and type bf:Manuscript
+g = Projected medium?
+i = bf:Audio
+j = bf:Audio
+k = bf:StillImage
+m = schema:SoftwareApplication
+o = Kit?
+p = bf:MixedMaterials
+r = bf:Object
+t = bf:Text, create related bf:Instance and type bf:Manuscript",code to subclass converison.,"{1,1}","Letter code, one of the following:
+a - Language material
+c - Notated music
+d - Manuscript notated music
+e - Cartographic material
+f - Manuscript cartographic material
+g - Projected medium
+i - Nonmusical sound recording
+j - Musical sound recording
+k - Two-dimensional nonprojectable graphic
+m - Computer file
+o - Kit
+p - Mixed materials
+r - Three-dimensional artifact or naturally occurring object
+t - Manuscript language material",
+LDR07,Bibliographic level,--,--,--,"Additional type or assertion applied to bf:Work resource. Not all values are mapped.
+a = :w1 bf:issuance ld4l:MonographicPart
+b = :w1 bf:issuance ld4l:SerialPart
+c = :w1 a bf:Collection
+d = do not map.
+i = :w1 bf:issuance ld4l:IntegratingResource
+m  = :w1 bf:issuance ld4l:Monograph
+s = :w1 bf:issuance ld4l:Serial",code to subclass converison.,"{1,1}","Letter code, one of the following:
+a - Monographic component part
+b - Serial component part
+c - Collection
+d - Subunit
+i - Integrating resource
+m - Monograph/Item
+s - Serial","This is actively under modeling consideration/changes. Preferably, the serial / monograph / part-whole aspects covered here will be translated to the RDF based off of other notes in the MARC bibliographic record that also give the related Work or Instance."
+LDR08,Type of control,--,--,--,"Additional type applied to bf:Instance resource related to bf:Work resource.
+# = do not map.
+a = bf:Instance is also instance of subclass bf:Archival.",code to subclass converison.,"{1,1}","Letter or character code, one of the following:
+# - No specified type
+a - Archival
+",The Archival subclass of Instance is still under discussion.
+LDR09,Character Encoding Scheme,--,--,--,--,--,"{1,1}","Character code, one of the following:
+# - MARC-8
+a - UCS/Unicode",Use this to make the convertor aware of encoding ahead. Convert all data in RDF to Unicode - check with Convertor team.
+LDR10,Indicator count,--,--,--,--,--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
+LDR11,Subfield code count,--,--,--,--,--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
+LDR12-16,Base address of data,--,--,--,--,--,"{1,1}",5 integers.,Ignore?
+LDR17,Record Encoding level,--,--,--,--,--,"{1,1}",1 character code. ,"Ignore for conversion, as this covers completeness or not of record. Will probably come back up later on."
+LDR18,Descriptive cataloging form,--,--,--,--,--,"{1,1}",1 character code.,"Ignore for conversion, as this covers the content standard in use. Will probably come back up later on."
+LDR19,Multipart resource record level,--,--,--,--,--,"{1,1}",1 character code. ,Ignore for now. Same issue as with part / serials / etc. code above.
+LDR20-23,Various record / MARC specifications for validity of record encoding.,--,--,--,--,--,"{1,1}",Integers.,"This may come back up if we run into validity issues with the MARC being converted, but ignore for now."
+003,Control Number Identifier,--,--,--,":w1 URI path indicating the institution, i.e. <http://ld4l.org/resources/[cornell for NIC]/1234567>. See related notes on 001.",code to URI path conversion.,"{0,1}",MARC Organization code. ,"Values taken from the databases here: http://www.loc.gov/marc/organizations/ Uncertain if these MARC Organization codes are available anywhere as LOD. This field is not always present, so we may need to derive the institution from other fields or convertor data sources."
+005,Date and Time of Latest Transaction,--,--,--,Admin Metadata (being worked on).,n/a,"{1,1}","Sixteen characters, digits: YYYYMMDDhhmmss.f",Sixteen characters that indicate the date and time of the latest record transaction and serve as a version identifier for the record. 
+006,Fixed-Length Data Elements,--,--,--,TBD,,"{0,1}",,
+007,Physical Description Fixed Field,--,--,--,TBD,,"{0,1}",,
+008,Fixed-Length Data Elements,--,--,--,Mapping being worked on (008 is a bit of an untangle).,,"{1,1}",,
+008,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+010,Library of Congress Control Number: LC control number (NR) ,##,$a,--,:w1 owl:sameAs <generate lccn URI based off identifier>,URI generation from just the path/identifier portion. Prepend 'http://lccn.loc.gov/' to the identifier value.,"{0,1}",LCCN identifier. ,"This will probably require further normalization to make the URIs valid (removing spaces, link verifcation, etc.)."
+010,Library of Congress Control Number: NUCMC control number (R) ,##,$b,--,"w:1 bf:identifiedBy :id1 .
+    :id1 a bf:Identifier ;
+    bf:source “National Union Catalog of Manuscript Collections” ;
+    rdf:value “[field value]” .",n/a,"{0,n}","NUCMC identifier, ""ms"" followed by integers.",
+010,Library of Congress Control Number: Canceled/invalid LC control number (R),##,$z,--,--,n/a,"{0,n}",Identifier.,Ignore invalid identifiers for now (to be possbily changed).
+010,Library of Congress Control Number: Field link and sequence number (R),##,$8,--,Mapping being worked on (specialized linking field).,n/a,"{0,n}",,
+013,Patent Control Information (R) ,,,,TBD,,,,
+015,National Bibliography Number (R) ,,,,TBD,,,,
+016,National Bibliographic Agency Control Number (R) ,,,,TBD,,,,
+017,Copyright or Legal Deposit Number (R) ,,,,TBD,,,,
+018,Copyright Article-Fee Code (NR) ,,,,TBD,,,,
+020,International Standard Book Number (R) ,##,a,,Mapping being work on (need to change where assertion lands according to one of the subfields).,,,,
+022,International Standard Serial Number (R) ,##,a,,Mapping being work on (need to change where assertion lands according to one of the subfields).,,,,
+024,Other Standard Identifier (R) ,,,,TBD,,,,
+025,Overseas Acquisition Number (R) ,,,,TBD,,,,
+026,Fingerprint Identifier (R) ,,,,TBD,,,,
+027,Standard Technical Report Number (R) ,,,,TBD,,,,
+028,Publisher Number (R) ,,,,TBD,,,,
+030,CODEN Designation (R) ,,,,TBD,,,,
+031,Musical Incipits Information (R) ,,,,TBD,,,,
+032,Postal Registration Number (R) ,,,,TBD,,,,
+033,Date/Time and Place of an Event (R) ,,,,TBD,,,,
+034,Coded Cartographic Mathematical Data (R) ,,,,Mapping being worked on by the Geospatial extension group.,,,,
+035,System Control Number (R) ,##,a,--,":w1 bf:identifiedBy :id1 .
+    :id1 a bf:Identifier ;
+    bf:source “[MARC Org code value contained in parentheses]” ;
+    rdf:value “[field value after parenthesis]” .","Don't include the parentheses - splitting the value according to that. May include reconciliation of Org Codes to LC, VIAF, or other URIs representing the institutions.","{0,1}",(marcOrg code)bibIdentifier,"See the normalization section. This is an area of possible improvement by performing institution code to institution URI reconciliation. Also, do we wish to ignore 035 without an identifier source (i.e. parenthesis)? Should always be the 001 value."
+035,System Control Number (R) ,##,z,--,--,--,"{0,1}",(marcOrg code)bibIdentifier,Ignore invalid identifiers for now (to be possbily changed).
+036,Original Study Number for Computer Data Files (NR) ,,,,TBD,,,,
+037,Source of Acquisition (R) ,,,,TBD,,,,
+038,Record Content Licensor (NR) ,,,,,,,,
+040,Cataloging Source (NR) - Original cataloging agency,##,a ,--,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Language of cataloging,##,b,--,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Transcribing Agency,##,c,--,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Modifying Agency,##,d,--,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Description Convetions,##,e,RDA,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Linkage,##,6,--,Admin Metadata (being worked on).,,,,
+040,Cataloging Source (NR) - Field link and sequence number,##,8,--,Admin Metadata (being worked on).,,,,
+041,Language Code (R) ,,,,TBD,,,,
+042,Authentication Code (NR) ,,,,TBD,,,,
+043,Geographic Area Code (NR) ,,,,TBD,,,,
+044,Country of Publishing/Producing Entity Code (NR) ,,,,TBD,,,,
+045,Time Period of Content (NR) ,,,,TBD,,,,
+046,Special Coded Dates (R) ,,,,TBD,,,,
+047,Form of Musical Composition Code (R) ,,,,TBD,,,,
+048,Number of Musical Instruments or Voices Codes (R) ,,,,TBD,,,,
+050,Library of Congress Call Number (R) - Classification number (R) ,Ignore,a,--,":w1 bf:classification :class1 . 
+:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion ""[field value]"" .",,,,
+050,Library of Congress Call Number (R) - Item number (NR),Ignore,b,--,":i1 bf:classification :class 1 . 
+:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion ""[subfield a field value]"" ;
+    bf:itemPortion ""[field value]"" .",,,,
+050,Library of Congress Call Number (R) - Materials specified (NR),Ignore,3,--,TBD,,,,
+050,Library of Congress Call Number (R) - Linkage (NR) ,Ignore,6,--,TBD,,,,
+050,Library of Congress Call Number (R) - Field link and sequence number (R) ,Ignore,8,--,TBD,,,,
+051,"Library of Congress Copy, Issue, Offprint Statement (R) ",,,,TBD,,,,
+052,Geographic Classification (R) ,,,,TBD,,,,
+055,Classification Numbers Assigned in Canada (R) ,,,,,,,,
+060,National Library of Medicine Call Number (R) ,,,,,,,,
+061,National Library of Medicine Copy Statement (R) ,,,,,,,,
+066,Character Sets Present (NR) ,,,,,,,,
+070,National Agricultural Library Call Number (R) ,,,,,,,,
+071,National Agricultural Library Copy Statement (R) ,,,,,,,,
+072,Subject Category Code (R) ,,,,,,,,
+074,GPO Item Number (R) ,,,,,,,,
+080,Universal Decimal Classification Number (R) ,,,,,,,,
+082,Dewey Decimal Classification Number (R) ,,,,,,,,
+083,Additional Dewey Decimal Classification Number (R) ,,,,,,,,
+084,Other Classification Number (R) ,,,,,,,,
+085,Synthesized Classification Number Components (R) ,,,,,,,,
+086,Government Document Classification Number (R) ,,,,,,,,
+088,Report Number (R) ,,,,,,,,
+09X,Local Call Numbers ,,,,,,,,
+100,Main Entry,,,,,,,,
+110,Main Entry,,,,,,,,
+111,Main Entry,,,,,,,,
+130,Main Entry,,,,,,,,
+210,Abbreviated Title (R),,,,,,,,
+222,Key Title (R),,,,,,,,
+240,Uniform Title (NR),,,,,,,,
+242,Translation of Title by Cataloging Agency (R),,,,,,,,
+243,Collective Uniform Title (NR),,,,,,,,
+245,Title Statement (NR) - Title,0?,a,--,"bf:Work 
+    ld4l:hasPreferredTitle :title1 ;
+:title1 a madsrdf:Title ;
+    rdfs:label “[field value concatenated with subfield b value if exists]” ;
+    dcterms:language [Lexvo URI for resource language code in 008] .",Remove trailing punctionation? To be determined.,"{1,1}",Title string.,Titles are a mess as they will lead to the creation of multiple resources and ranking issues. Need to confirm approach for LD4All WRT nonfiling characters.
+245,Title Statement (NR) - Remainder of title (NR),0?,b,--,"bf:Work 
+    ld4l:hasPreferredTitle :title1 ;
+:title1 a madsrdf:Title ;
+    rdfs:label “[field value concatenated after subfield a value]” ;
+    dcterms:hasPart :titlepart1 ;
+    dcterms:language [Lexvo URI for resource language code in 008] .
+
+:titlepart1 a madsrdf:SubtitleElement ;
+    rdfs:label ""[field value]"" ;
+    vivo:rank ""[order appeared in 245 integer]""@xsd:integer .",Remove trailing punctionation? To be determined.,"{0,n}",Subtitle string.,Titles are a mess as they will lead to the creation of multiple resources and ranking issues. Need to confirm approach for LD4All WRT nonfiling characters.
+245,"Title Statement (NR) - Statement of responsibility, etc. (NR)",0?,c,,"bf:Work hasInstance bf:Instance . bf:Instance bf:responsibilityStatement ""[field value]"" .",Remove trailing punctionation? To be determined.,"{0,1}",Statement of responsibility string.,Applies to the Instance.
+245,Title Statement (NR) - Inclusive dates (NR) ,0?,f,,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Bulk dates (NR) ,0?,g,,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Medium (NR),0?,h,AACR2,Ignore for now. May be mapped to some sort of container/carrier field later.,,,,
+245,Title Statement (NR) - Form (R),0?,k,,,,,,
+245,Title Statement (NR) - Number of part/section of a work (R),0?,n,,TBD,,,,
+245,Title Statement (NR) - Name of part/section of a work (R),0?,p,,TBD,,,,
+245,Title Statement (NR) - Version (NR) ,0?,s,,TBD,,,,
+245,Title Statement (NR) - Linkage (NR),0?,6,,TBD,,,,
+245,Title Statement (NR) -  Field link and sequence number (R),0?,8,,TBD,,,,
+246,Varying Form of Title (R),,,,,,,,
+247,Former Title (R),,,,,,,,
+250,Edition Statement (R) ,,,,,,,,
+254,Musical Presentation Statement (NR) ,,,,,,,,
+255,Cartographic Mathematical Data (R) ,,,,,,,,
+256,Computer File Characteristics (NR) ,,,,,,,,
+257,Country of Producing Entity (R) ,,,,,,,,
+258,Philatelic Issue Data (R) ,,,,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Place of publication, distribution, etc. (R)",##,a,non-RDA,":in1 a ld4l:PublicationActivity ;
+    bf:place :place1 .
+:place1 a prov:Location ;
+    rdfs:label ""value of subfield"" .",Ideal reconciliation candidate. Strip punctuation. ,"{0,n}","String - ""City, Place"", generally.",
+260,"Publication, Distribution, etc. (Imprint) - Name of publisher, distributor, etc. (R)",##,b,non-RDA,":in1 a ld4l:PublicationActivity ;
+    bf:agent :agent1 .
+:agent1 a foaf:Agent ;
+    rdfs:label ""value of subfield"" .",Ideal reconciliation candidate. Strip punctuation. ,"{0,n}","String - ""Organization"", generally.",
+260,"Publication, Distribution, etc. (Imprint) - Date of publication, distribution, etc. (R)",##,c,non-RDA,":in1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of subfield"" .","Will require date normalization. Strip trailing punctuation, split based of commas sometimes. Needs date parsing patterns.","{0,n}","String - varies from ""1999"" to ""1999, 2002"" to ""April 15, 1999"".",
+260,"Publication, Distribution, etc. (Imprint) - Place of manufacture (R)",##,e,non-RDA,,,"{0,n}",,
+260,"Publication, Distribution, etc. (Imprint) (R) ",##,$f - Manufacturer (R),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",##,$g - Date of manufacture (R),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",##,$3 - Materials specified (NR),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",##,$6 - Linkage (NR),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",##,$8 - Field link and sequence number (R),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",#2,,non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) (R) ",#3,,non-RDA,,,,,
+261,Imprint Statement of Films (Pre-AACR 1 Revised) (NR),,,,,,,,
+262,Imprint Statement of Sound Recordings (Pre-AACR 2) (NR),,,,,,,,
+263,Projected Publication Date (NR) ,,,,,,,,
+264,"Production, Publication, Distribution, Manufacture, and Copyright Notice (R) ",,,,,,,,
+270,Address (R) ,,,,,,,,
+300,Physical Description - Extent (R),##,a,AACR or RDA,":in1 bf:extent :ext1 .
+:ext1 a bf:Extent ;
+    bf:unit :unit1 ;
+    rdfs:label ""value of subfield separate from units"" .
+:unit1 a bf:Unit, bibo:Page ;
+    rdfs:label ""value of subfield units normalized"" .","Going to require splitting number from unit type, as well as handling unit abbreviations. ","{0,n}","String, number plus unit, unit is abbreviated in non-RDA records. ",
+300,Physical Description - Other physical details (NR),##,b,AACR or RDA,:in1 ld4l:illustrativeContent [Named Individual that corresponds to value normalized and mapped] .,"Will require string values to named individuals mapping, matching. ","{0,1}","String, indicating type of illustrations contained. Is abbreviated in non-RDA records. ",
+300,Physical Description - Dimensions (R),##,c,AACR or RDA,,,,,
+300,Physical Description (R) ,##,e - Accompanying material (NR),,,,,,
+300,Physical Description (R) ,##,f - Type of unit (R),,,,,,
+300,Physical Description (R) ,##,g - Size of unit (R),,,,,,
+,,,3 - Materials specified (NR),,,,,,
+,,,6 - Linkage (NR),,,,,,
+,,,8 - Field link and sequence number (R,,,,,,
+306,Playing Time (NR) ,,,,,,,,
+307,"Hours, etc. (R) ",,,,,,,,
+310,Current Publication Frequency (NR) ,,,,,,,,
+321,Former Publication Frequency (R) ,,,,,,,,
+336,Content Type (R) ,,,,,,,,
+337,Media Type (R) ,,,,,,,,
+338,Carrier Type (R) ,,,,,,,,
+340,Physical Medium (R) ,,,,,,,,
+342,Geospatial Reference Data (R) ,,,,,,,,
+343,Planar Coordinate Data (R) ,,,,,,,,
+344,Sound Characteristics (R) ,,,,,,,,
+345,Projection Characteristics of Moving Image (R) ,,,,,,,,
+346,Video Characteristics (R) ,,,,,,,,
+347,Digital File Characteristics (R) ,,,,,,,,
+348,Format of Notated Music (R) ,,,,,,,,
+351,Organization and Arrangement of Materials (R) ,,,,,,,,
+352,Digital Graphic Representation (R) ,,,,,,,,
+355,Security Classification Control (R) ,,,,,,,,
+357,Originator Dissemination Control (NR) ,,,,,,,,
+362,Dates of Publication and/or Sequential Designation (R) ,,,,,,,,
+363,Normalized Date and Sequential Designation (R) ,,,,,,,,
+365,Trade Price (R) ,,,,,,,,
+366,Trade Availability Information (R) ,,,,,,,,
+370,Associated Place (R) ,,,,,,,,
+377,Associated Language (R) ,,,,,,,,
+380,Form of Work (R) ,,,,,,,,
+381,Other Distinguishing Characteristics of Work or Expression (R) ,,,,,,,,
+382,Medium of Performance (R) ,,,,,,,,
+383,Numeric Designation of Musical Work (R) ,,,,,,,,
+384,Key (NR) ,,,,,,,,
+385,Audience Characteristics (R) ,,,,,,,,
+386,Creator/Contributor Characteristics (R) ,,,,,,,,
+388,Time Period of Creation (R) ,,,,,,,,
+400,Series Statement/Added Entry,,,,,,,,
+410,Series Statement/Added Entry,,,,,,,,
+411,Series Statement/Added Entry,,,,,,,,
+440,Series Statement/Added Entry,,,,,,,,
+490,Series Statement (R),,,,,,,,
+500,General Note (R),,,,,,,,
+501,With Note (R),,,,,,,,
+502,Dissertation Note (R),,,,,,,,
+504,"Bibliography, etc. Note (R)",,,,,,,,
+505,Formatted Contents Note (R),,,,,,,,
+506,Restrictions on Access Note (R),,,,,,,,
+507,Scale Note for Graphic Material (NR),,,,,,,,
+508,Creation/Production Credits Note (R),,,,,,,,
+510,Citation/References Note (R),,,,,,,,
+511,Participant or Performer Note (R),,,,,,,,
+513,Type of Report and Period Covered Note (R),,,,,,,,
+514,Data Quality Note (NR),,,,,,,,
+515,Numbering Peculiarities Note (R),,,,,,,,
+516,Type of Computer File or Data Note (R),,,,,,,,
+518,Date/Time and Place of an Event Note (R),,,,,,,,
+520,"Summary, etc. (R)",,,,,,,,
+521,Target Audience Note (R),,,,,,,,
+522,Geographic Coverage Note (R),,,,,,,,
+524,Preferred Citation of Described Materials Note (R),,,,,,,,
+525,Supplement Note (R),,,,,,,,
+526,Study Program Information Note (R),,,,,,,,
+530,Additional Physical Form available Note (R),,,,,,,,
+533,Reproduction Note (R),,,,,,,,
+534,Original Version Note (R),,,,,,,,
+535,Location of Originals/Duplicates Note (R),,,,,,,,
+536,Funding Information Note (R),,,,,,,,
+538,System Details Note (R),,,,,,,,
+540,Terms Governing Use and Reproduction Note (R),,,,,,,,
+541,Immediate Source of Acquisition Note (R),,,,,,,,
+542,Information Relating to Copyright Status (R),,,,,,,,
+544,Location of Other Archival Materials Note (R),,,,,,,,
+545,Biographical or Historical Data (R),,,,,,,,
+546,Language Note (R),,,,,,,,
+547,Former Title Complexity Note (R),,,,,,,,
+550,Issuing Body Note (R),,,,,,,,
+552,Entity and Attribute Information Note (R),,,,,,,,
+555,Cumulative Index/Finding Aids Note (R),,,,,,,,
+556,Information About Documentation Note (R),,,,,,,,
+561,Ownership and Custodial History (R),,,,,,,,
+562,Copy and Version Identification Note (R),,,,,,,,
+563,Binding Information (R),,,,,,,,
+565,Case File Characteristics Note (R),,,,,,,,
+567,Methodology Note (R),,,,,,,,
+580,Linking Entry Complexity Note (R),,,,,,,,
+581,Publications About Described Materials Note (R),,,,,,,,
+583,Action Note (R),,,,,,,,
+584,Accumulation and Frequency of Use Note (R),,,,,,,,
+585,Exhibitions Note (R),,,,,,,,
+586,Awards Note (R),,,,,,,,
+588,Source of Description Note (R),,,,,,,,
+59X,Local Notes,,,,,,,,
+600,Subject Added Entry,,,,,,,,
+610,Subject Added Entry,,,,,,,,
+611,Subject Added Entry,,,,,,,,
+630,Subject Added Entry,,,,,,,,
+648,Subject Added Entry,,,,,,,,
+650,Subject Added Entry,,,,,,,,
+651,Subject Added Entry,,,,,,,,
+653,Index Term,,,,,,,,
+654,Subject Added Entry,,,,,,,,
+655,Index Term,,,,,,,,
+656,Index Term,,,,,,,,
+657,Index Term,,,,,,,,
+658,Index Term,,,,,,,,
+662,Subject Added Entry,,,,,,,,
+69X,Local Subject Access Fields (R),,,,,,,,
+700,Added Entry,,,,,,,,
+710,Added Entry,,,,,,,,
+711,Added Entry,,,,,,,,
+720,Added Entry,,,,,,,,
+730,Added Entry,,,,,,,,
+740,Added Entry,,,,,,,,
+751,Added Entry,,,,,,,,
+752,Added Entry,,,,,,,,
+753,System Details Access to Computer Files (R),,,,,,,,
+754,Added Entry,,,,,,,,
+760,Main Series Entry (R),,,,,,,,
+762,Subseries Entry (R),,,,,,,,
+765,Original Language Entry (R),,,,,,,,
+767,Translation Entry (R),,,,,,,,
+770,Supplement/Special Issue Entry (R),,,,,,,,
+772,Supplement Parent Entry (R),,,,,,,,
+773,Host Item Entry (R),,,,,,,,
+774,Constituent Unit Entry (R),,,,,,,,
+775,Other Edition Entry (R),,,,,,,,
+776,Additional Physical Form Entry (R),,,,,,,,
+777,Issued With Entry (R),,,,,,,,
+780,Preceding Entry (R),,,,,,,,
+785,Succeeding Entry (R),,,,,,,,
+786,Data Source Entry (R),,,,,,,,
+787,Other Relationship Entry (R),,,,,,,,
+800,Series Added Entry,,,,,,,,
+810,Series Added Entry,,,,,,,,
+811,Series Added Entry,,,,,,,,
+830,Series Added Entry,,,,,,,,
+841,Holdings Coded Data Values (NR),,,,,,,,
+842,Textual Physical Form Designator (NR),,,,,,,,
+843,Reproduction Note (R),,,,,,,,
+844,Name of Unit (NR),,,,,,,,
+845,Terms Governing Use and Reproduction (R),,,,,,,,
+850,Holding Institution (R) ,,,,,,,,
+852,Location (R) ,,,,,,,,
+853,Captions and Pattern,,,,,,,,
+854,Captions and Pattern,,,,,,,,
+855,Captions and Pattern,,,,,,,,
+856,Electronic Location and Access (R) ,,,,,,,,
+863,Enumeration and Chronology,,,,,,,,
+864,Enumeration and Chronology,,,,,,,,
+865,Enumeration and Chronology,,,,,,,,
+866,Textual Holdings,,,,,,,,
+867,Textual Holdings,,,,,,,,
+868,Textual Holdings,,,,,,,,
+876,Item Information,,,,,,,,
+877,Item Information,,,,,,,,
+878,Item Information,,,,,,,,
+880,Alternate Graphic Representation (R) ,,,,,,,,
+882,Replacement Record Information (NR) ,,,,,,,,
+883,Machine-generated Metadata Provenance (R) ,,,,,,,,
+884,Description Conversion Information (R) ,,,,,,,,
+886,Foreign MARC Information Field (R) ,,,,,,,,
+887,Non-MARC Information Field (R) ,,,,,,,,
+900,Equivalence or Cross-Reference Personal Name (R),,,,,,,,
+910,Equivalence or Cross-Reference Corporate Name (R),,,,,,,,
+911,Equivalence or Cross-Reference Conference or Meeting Name (R),,,,,,,,
+930,Equivalence or Cross-Reference Uniform Title Heading (R),,,,,,,,
+980,Equivalence or Cross-Reference Series Statement Personal Name/Title (R),,,,,,,,
+981,Equivalence or Cross-Reference Series Statement Corporate Name/Title (R),,,,,,,,
+982,Equivalence or Cross-Reference Series Statement Conference or Meeting Name/Title (R),,,,,,,,
+983,Equivalence or Cross-Reference Series Statement Title/Uniform Title (R),,,,,,,,
+990,Link to Equivalences or Cross-References (R),,,,,,,,
