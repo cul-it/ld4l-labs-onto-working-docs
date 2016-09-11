@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:bf="http://bibframe.org/vocab/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ld4l="http://bib.ld4l.org/ontology/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://cornell.edu/test/ext1">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Extent"/>
+    <rdf:value>14</rdf:value>
+    <bf:unit rdf:resource="http://cornell.edu/test/volume"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/264406">
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id1"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+    <bf:hasInstance rdf:resource="http://cornell.edu/test/264406instance1"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id4"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class1"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class3"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id3"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id2"/>
+    <dcterms:subject rdf:resource="http://id.worldcat.org/fast/00992193"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/ContinuingResource"/>
+    <dcterms:subject rdf:resource="http://id.worldcat.org/fast/01411641"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Work"/>
+    <owl:sameAs rdf:resource="http://lccn.loc.gov/68005459"/>
+    <dcterms:subject rdf:resource="http://id.worldcat.org/fast/00999202"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Text"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class1">
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:classificationPortion>P1.A1</bf:classificationPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/264406instance1">
+    <bf:dimensions>25 cm.</bf:dimensions>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Instance"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class2"/>
+    <bf:extent rdf:resource="http://cornell.edu/test/ext1"/>
+    <ld4l:hasActivity rdf:resource="http://cornell.edu/test/act1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/act1">
+    <bf:place rdf:resource="http://www.geonames.org/2750405"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/PublicationActivity"/>
+    <dcterms:date rdf:datatype="http://id.loc.gov/datatypes/edtf/EDTF">1965/1976</dcterms:date>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id3">
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <bf:source>NIC</bf:source>
+    <rdf:value>notisABC9706</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class2">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:itemPortion>F6</bf:itemPortion>
+    <bf:classificationPortion>P1.A1</bf:classificationPortion>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id4">
+    <rdf:value>264406</rdf:value>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n85179829"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id1">
+    <rdf:value>1313337</rdf:value>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <bf:source>OCoLC</bf:source>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id2">
+    <bf:source>CStRLIN</bf:source>
+    <rdf:value>NYCX1313337S</rdf:value>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class3">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationDdc"/>
+    <bf:classificationPortion>410.5</bf:classificationPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/volume">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Unit"/>
+    <rdf:value>volume</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/titlePart1">
+    <rdfs:label>Foundations of language.</rdfs:label>
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#MainTitleElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/title1">
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Title"/>
+    <rdfs:label>Foundations of language.</rdfs:label>
+    <dcterms:hasPart rdf:resource="http://cornell.edu/test/titlePart1"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+  </rdf:Description>
+</rdf:RDF>

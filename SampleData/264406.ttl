@@ -1,0 +1,60 @@
+@prefix bf: <http://bibframe.org/vocab/> .
+@prefix cul: <http://cornell.edu/test/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ld4l: <http://bib.ld4l.org/ontology/> .
+@prefix lexvo: <http://lexvo.org/id/iso639-3/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+cul:264406 a bf:Text, ld4l:ContinuingResource, bf:Work ;
+    bf:classification cul:class1, cul:class3 ;
+    bf:hasInstance cul:264406instance1 ;
+    bf:identifiedBy cul:id1, cul:id2, cul:id3, cul:id4 ;
+    dcterms:language lexvo:eng ;
+    dcterms:subject <http://id.worldcat.org/fast/00992193> ;
+    dcterms:subject <http://id.worldcat.org/fast/00999202> ;
+    dcterms:subject <http://id.worldcat.org/fast/01411641> ;
+    owl:sameAs <http://lccn.loc.gov/68005459> .
+cul:264406instance1 a bf:Instance ;
+    bf:classification cul:class2 ;
+    bf:dimensions "25 cm." ;
+    bf:extent cul:ext1 ;
+    ld4l:hasActivity cul:act1 .
+cul:act1 a ld4l:PublicationActivity ;
+    bf:place <http://www.geonames.org/2750405> ;
+    dcterms:date "1965/1976"^^<http://id.loc.gov/datatypes/edtf/EDTF> .
+cul:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion "P1.A1" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .
+cul:class2 a bf:ClassificationLcc ;
+    bf:classificationPortion "P1.A1" ;
+    bf:itemPortion "F6" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .
+cul:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion "410.5" .
+cul:ext1 a bf:Extent ;
+    bf:unit cul:volume ;
+    rdf:value "14" .
+cul:id1 a ld4l:LocalIlsIdentifier ;
+    bf:source "OCoLC" ;
+    rdf:value "1313337" .
+cul:id2 a ld4l:LocalIlsIdentifier ;
+    bf:source "CStRLIN" ;
+    rdf:value "NYCX1313337S" .
+cul:id3 a ld4l:LocalIlsIdentifier ;
+    bf:source "NIC" ;
+    rdf:value "notisABC9706" .
+cul:id4 a ld4l:LocalIlsIdentifier ;
+    rdf:value "264406" ;
+    bf:source <http://id.loc.gov/rwo/agents/n85179829> .
+cul:volume a bf:Unit ;
+    rdf:value "volume" .
+cul:title1 a madsrdf:Title ;
+    dcterms:hasPart cul:titlePart1 ;
+    dcterms:language lexvo:eng ;
+    rdfs:label "Foundations of language." .
+cul:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label "Foundations of language." .

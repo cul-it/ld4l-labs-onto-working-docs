@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:bf="http://bibframe.org/vocab/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ld4l="http://bib.ld4l.org/ontology/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://cornell.edu/test/102063">
+    <bf:hasInstance rdf:resource="http://cornell.edu/test/102063"/>
+    <bf:hasInstance rdf:resource="http://cornell.edu/test/102063instance1"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id1"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Text"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Work"/>
+    <owl:sameAs rdf:resource="http://lccn.loc.gov/56010158/L"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id2"/>
+    <dcterms:subject rdf:resource="http://id.worldcat.org/fast/853831"/>
+    <bf:supplementaryContent rdf:resource="http://bib.ld4l.org/ontology/SupplementaryBibliography"/>
+    <ld4l:hasPreferredTitle rdf:resource="http://cornell.edu/test/title1"/>
+    <ld4l:hasActivity rdf:resource="http://cornell.edu/test/act3"/>
+    <bf:issuance rdf:resource="http://bib.ld4l.org/ontology/Monograph"/>
+    <ld4l:illustrativeContent rdf:resource="http://bib.ld4l.org/ontology/IllustrationsContent"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class1"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class3"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id4"/>
+    <ld4l:hasActivity rdf:resource="http://cornell.edu/test/act2"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id3"/>
+    <dcterms:subject rdf:resource="http://id.loc.gov/authorities/subjects/sh85023137"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id4">
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n85179829"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <rdf:value>102063</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id2">
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <bf:source>CStRLIN</bf:source>
+    <rdf:value>NYCX86B63464</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/act3">
+    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n50060120"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/ContributingActivity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/102063instance1">
+    <ld4l:hasActivity rdf:resource="http://cornell.edu/test/act1"/>
+    <bf:responsibilityStatement>Sponsored by the American College of Chest Physicians. Editorial board: Burgess L. Gordon, chairman, editor-in-chief, Albert H. Andrews [and others]</bf:responsibilityStatement>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Instance"/>
+    <bf:dimensions>27 cm.</bf:dimensions>
+    <bf:classification rdf:resource="http://cornell.edu/test/class2"/>
+    <bf:extent rdf:resource="http://cornell.edu/test/ext1"/>
+    <bf:supplementaryContent rdf:resource="http://bib.ld4l.org/ontology/BibliographyContent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id3">
+    <bf:source>NIC</bf:source>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <rdf:value>notisAAL3258</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/act2">
+    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n92026228"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/EditingActivity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class3">
+    <bf:classificationPortion>616.2</bf:classificationPortion>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationDdc"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/title1">
+    <rdfs:label>Clinical cardiopulmonary physiology.</rdfs:label>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+    <dcterms:hasPart rdf:resource="http://cornell.edu/test/titlePart1"/>
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Title"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/place1">
+    <rdfs:label>New York</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/prov#Location"/>
+    <owl:sameAs rdf:resource="http://sws.geonames.org/5128581/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class2">
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+    <bf:classificationPortion>RC941</bf:classificationPortion>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:itemPortion>.C6</bf:itemPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id1">
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/LocalIlsIdentifier"/>
+    <rdf:value>1345399</rdf:value>
+    <bf:source>OCoLC</bf:source>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class1">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:classificationPortion>RC941</bf:classificationPortion>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/page">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Unit"/>
+    <rdf:value>page</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/ext1">
+    <rdf:value>759</rdf:value>
+    <rdf:value rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">759</rdf:value>
+    <bf:unit rdf:resource="http://cornell.edu/test/page"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Extent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/titlePart1">
+    <rdfs:label>Clinical cardiopulmonary physiology.</rdfs:label>
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#MainTitleElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/act1">
+    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n83008217"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/PublicationActivity"/>
+    <dcterms:date rdf:datatype="http://id.loc.gov/datatypes/edtf/EDTF">1957</dcterms:date>
+    <bf:place rdf:resource="http://cornell.edu/test/place1"/>
+  </rdf:Description>
+</rdf:RDF>
