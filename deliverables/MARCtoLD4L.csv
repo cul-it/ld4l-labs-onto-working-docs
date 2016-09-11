@@ -1,8 +1,12 @@
 MARC Field(s),MARC Field(s) Name,MARC Indicator(s),MARC Subfield(s),MARC Content Standard (if applicable for mapping differences),LD4L/BF2 Fragment,Convertor Normalization Required,MARC Obligation,MARC Expected Value,Conversion Notes
 ,,# = Empty (in some MARC serializations represented as '#'),,,":w1 == bf:Work instance, :in1 == bf:Instance instance, :it1 == bf:Item instance. # == # or Empty.",,,,
-001,Control Number,--,--,--,"bf:Work URI path, i.e. <http://ld4l.org/resources/cornell/1234567> Presuming for the sake of this conversion spec that the following structure: related bf:Instance URIs would be <http://ld4l.org/resources/cornell/1234567/instance1> (last number to change for instance identifiers or system settings), related bf:Item URIs would be <http://ld4l.org/resources/cornell/1234567/instance1/item1> (same note about item identifiers / system settings as with instances).",n/a,"{1,1}","12 characters, either digits or # character.","Control number i.e. record identifier within the originating system. Pairs with the 003, which gives the system originating the control number."
-LDR00-04,Record length,--,--,--,--,--,"{1,1}",5 integers.,Ignore.
-LDR05,Record status,--,--,--,--,--,"{1,1}",Letter code.,"Ignore, unless we don't want to convert deleted records."
+001 | 003,Control Number | Control Number Identifier,--,--,--,":w1 bf:identifiedBy :id1 .
+:id1 a ld4l:IlsLocalIdentifier ;
+    rdfs:label ""value of 001"" ; 
+    bf:source ""value of 003"" .",003 code to Institution URI resolution?,"{1,1} | {0,1}","12 characters, either digits or # character. | MARC Organization code. ","Control number i.e. record identifier within the originating system. | Institution whose system originated the control number in 001. Values taken from the databases here: http://www.loc.gov/marc/organizations/ Uncertain if these MARC Organization codes are available anywhere as LOD. This field is not always present, so we may need to derive the institution from other fields or convertor data sources."
+*005,Date and Time of Latest Transaction,--,--,--,Admin Metadata (being worked on).,n/a,"{1,1}","Sixteen characters, digits: YYYYMMDDhhmmss.f",Sixteen characters that indicate the date and time of the latest record transaction and serve as a version identifier for the record. 
+LDR00-04,Record length,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",5 integers.,Ignore.
+LDR05,Record status,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",Letter code.,"Ignore, unless we don't want to convert deleted records."
 LDR06,Type of record,--,--,--,"bf:Work subclass (:w1 a) applied to resource, following this mapping:
 a = bf:Text
 c = bf:NotatedMusic
@@ -31,7 +35,7 @@ m - Computer file
 o - Kit
 p - Mixed materials
 r - Three-dimensional artifact or naturally occurring object
-t - Manuscript language material",
+t - Manuscript language material",This is needed for understanding the 008 field as well. 
 LDR07,Bibliographic level,--,--,--,"Additional type or assertion applied to bf:Work resource. Not all values are mapped.
 a = :w1 bf:issuance ld4l:MonographicPart
 b = :w1 bf:issuance ld4l:SerialPart
@@ -46,38 +50,187 @@ c - Collection
 d - Subunit
 i - Integrating resource
 m - Monograph/Item
-s - Serial","This is actively under modeling consideration/changes. Preferably, the serial / monograph / part-whole aspects covered here will be translated to the RDF based off of other notes in the MARC bibliographic record that also give the related Work or Instance."
+s - Serial",This is needed for understanding the 008 field as well. 
 LDR08,Type of control,--,--,--,"Additional type applied to bf:Instance resource related to bf:Work resource.
 # = do not map.
 a = bf:Instance is also instance of subclass bf:Archival.",code to subclass converison.,"{1,1}","Letter or character code, one of the following:
 # - No specified type
 a - Archival
 ",The Archival subclass of Instance is still under discussion.
-LDR09,Character Encoding Scheme,--,--,--,--,--,"{1,1}","Character code, one of the following:
+LDR09,Character Encoding Scheme,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}","Character code, one of the following:
 # - MARC-8
 a - UCS/Unicode",Use this to make the convertor aware of encoding ahead. Convert all data in RDF to Unicode - check with Convertor team.
-LDR10,Indicator count,--,--,--,--,--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
-LDR11,Subfield code count,--,--,--,--,--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
-LDR12-16,Base address of data,--,--,--,--,--,"{1,1}",5 integers.,Ignore?
+LDR10,Indicator count,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
+LDR11,Subfield code count,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",2,"Largely ignore, unless we are dealing with non-US or non-MARC21 MARC."
+LDR12-16,Base address of data,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",5 integers.,Ignore?
 LDR17,Record Encoding level,--,--,--,--,--,"{1,1}",1 character code. ,"Ignore for conversion, as this covers completeness or not of record. Will probably come back up later on."
-LDR18,Descriptive cataloging form,--,--,--,--,--,"{1,1}",1 character code.,"Ignore for conversion, as this covers the content standard in use. Will probably come back up later on."
+LDR18,Descriptive cataloging form,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",1 character code.,"Ignore for conversion, as this covers the content standard in use. Will probably come back up later on."
 LDR19,Multipart resource record level,--,--,--,--,--,"{1,1}",1 character code. ,Ignore for now. Same issue as with part / serials / etc. code above.
-LDR20-23,Various record / MARC specifications for validity of record encoding.,--,--,--,--,--,"{1,1}",Integers.,"This may come back up if we run into validity issues with the MARC being converted, but ignore for now."
-003,Control Number Identifier,--,--,--,":w1 URI path indicating the institution, i.e. <http://ld4l.org/resources/[cornell for NIC]/1234567>. See related notes on 001.",code to URI path conversion.,"{0,1}",MARC Organization code. ,"Values taken from the databases here: http://www.loc.gov/marc/organizations/ Uncertain if these MARC Organization codes are available anywhere as LOD. This field is not always present, so we may need to derive the institution from other fields or convertor data sources."
-005,Date and Time of Latest Transaction,--,--,--,Admin Metadata (being worked on).,n/a,"{1,1}","Sixteen characters, digits: YYYYMMDDhhmmss.f",Sixteen characters that indicate the date and time of the latest record transaction and serve as a version identifier for the record. 
+LDR20-23,Various record / MARC specifications for validity of record encoding.,--,--,--,"Convertor / valid MARC21 need, possibly.",--,"{1,1}",Integers.,"This may come back up if we run into validity issues with the MARC being converted, but ignore for now."
+*008/00-05,Date entered on file,--,--,--,Admin Metadata (being worked on).,--,"{1,1}",Integers - yymmdd,
+008/06 == s | 008/07-10,Date 1 - single known date,--,--,--,":w1 a bf:Work ;
+    ld4l:hasActivity :act1 .
+:act1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of 07-10""^^edtf ;
+    bf:place <URI for resolved MARC 3 character location code> ;
+    bf:agent :ag1 .
+:ag1 a foaf:Agent;
+    rdfs:label ""value from 260 ## $b or 264 #4 $b"" .",--,"{1,1}","integers, possibly 'u', or '\' - YYYY ",
+008/06 == s | 008/11-14,Date 2 - single known date,--,--,--,n/a,--,"{0,0}",ignore. Should not apply to code s.,
+008/06 == s | 008/15-17,"Place of publication, production, or execution - single known date",--,--,--,":w1 a bf:Work ;
+    ld4l:hasActivity :act1 .
+:act1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of 07-10""^^edtf ;
+    bf:place <URI for resolved MARC 3 character location code> ;
+    bf:agent :ag1 .
+:ag1 a foaf:Agent;
+    rdfs:label ""value from 260 ## $b or 264 #4 $b"" .",Take MARC 3 character code and resolve to a URI.,"{1,1}","xx# - No place, unknown, or undetermined
+vp# - Various places
+[aaa] - Three-character alphabetic code
+[aa#] - Two-character alphabetic code",
+008/06 == d | 008/07-10,Date 1 - Continuing resource ceased publication,--,--,--,":w1 a bf:Work ;
+    ld4l:hasActivity :act1 .
+:act1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of 07-10/value of 11-14""^^edtf .",--,"{1,1}","integers, possibly 'u', or '\' - YYYY ",
+008/06 == d | 008/11-14,Date 2 -Continuing resource ceased publication,--,--,--,":w1 a bf:Work ;
+    ld4l:hasActivity :act1 .
+:act1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of 07-10/value of 11-14""^^edtf .",--,"{0,0}",ignore. Should not apply to code s.,
+008/06 == d | 008/15-17,"Place of publication, production, or execution - Continuing resource ceased publication",--,--,--,":w1 a bf:Work ;
+    ld4l:hasActivity :act1 .
+:act1 a ld4l:PublicationActivity ;
+    dcterms:date ""value of 07-10""^^edtf ;
+    bf:place <URI for resolved MARC 3 character location code> ;
+    bf:agent :ag1 .
+:ag1 a foaf:Agent;
+    rdfs:label ""value from 260 ## $b or 264 #4 $b"" .",Take MARC 3 character code and resolve to a URI.,"{1,1}","xx# - No place, unknown, or undetermined
+vp# - Various places
+[aaa] - Three-character alphabetic code
+[aa#] - Two-character alphabetic code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/18-21",Illustrations,--,--,--,:w1 ld4l:hasIllustrativeContent ld4l:IllustrationsContent . (x4 for each code given),code to ld4l Named Individual mapping.,"{1,1}","3 code values, each code can mean:
+# - No illustrations
+a - Illustrations
+b - Maps
+c - Portraits
+d - Charts
+e - Plans
+f - Plates
+g - Music
+h - Facsimiles
+i - Coats of arms
+j - Genealogical tables
+k - Forms
+l - Samples
+m - Phonodisc, phonowire, etc.
+o - Photographs
+p - Illuminations
+| - No attempt to code",Do not may '|'
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/22",Target Audience,--,--,--,:w1 bf:intendedAudience bf:IntendedAudienceNamedIndividual .,code to bf2 or ld4l Named Individual mapping.,"{1,1}","# - Unknown or not specified
+a - Preschool
+b - Primary
+c - Pre-adolescent
+d - Adolescentee
+e - Adult
+f - Specialized
+g - General
+j - Juvenile
+| - No attempt to code",Do not map '#' or '|'.
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/23",Form of Item,--,--,--,not yet decided. Differs depending on value.,,"{1,1}","# - None of the following
+a - Microfilm
+b - Microfiche
+c - Microopaque
+d - Large print
+f - Braille
+o - Online
+q - Direct electronic
+r - Regular print reproduction
+s - Electronic
+| - No attempt to code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/24-27",Nature of Contents,--,--,--,not yet decided. Differs depending on value.,code to bf2 or ld4l Named Individual mapping.,"{1,1}","# - No specified nature of contents
+a - Abstracts/summaries
+b - Bibliographies
+c - Catalogs
+d - Dictionaries
+e - Encyclopedias
+f - Handbooks
+g - Legal articles
+i - Indexes
+j - Patent document
+k - Discographies
+l - Legislation
+m - Theses
+n - Surveys of literature in a subject area
+o - Reviews
+p - Programmed texts
+q - Filmographies
+r - Directories
+s - Statistics
+t - Technical reports
+u - Standards/specifications
+v - Legal cases and case notes
+w - Law reports and digests
+y - Yearbooks
+z - Treaties
+2 - Offprints
+5 - Calendars
+6 - Comics/graphic novels
+| - No attempt to code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/28",Government publication,--,--,--,--,Capture in governmental organization that is issuing body?,"{1,1}","# - Not a government publication
+a - Autonomous or semi-autonomous component
+c - Multilocal
+f - Federal/national
+i - International intergovernmental
+l - Local
+m - Multistate
+o - Government publication-level undetermined
+s - State, provincial, territorial, dependent, etc.
+u - Unknown if item is government publication
+z - Other
+| - No attempt to code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/29",Conference publication,--,--,--,--,Capture in conference that is issuing body and related event?,"{1,1}","0 - Not a conference publication
+1 - Conference publication
+| - No attempt to code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/30",Festschrift,--,--,--,:w1 a ld4l:Festschrift .,--,"{1,1}","0 - Not a festschrift
+1 - Festschrift
+| - No attempt to code",Need festschrift as subclass of Work.
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/31",Index,--,--,--,:w1 bf:hasSupplementaryContent ld4l:SupplementaryIndex .,--,"{1,1}","0 - No index
+1 - Index present
+| - No attempt to code",
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/33",Literary form,--,--,--,:w1 a ld4l:[work subclass for form] .,code to bf2 or ld4l subclass mapping.,"{1,1}","0 - Not fiction (not further specified)
+1 - Fiction (not further specified)
+d - Dramas
+e - Essays
+f - Novels
+h - Humor, satires, etc.
+i - Letters
+j - Short stories
+m - Mixed forms
+p - Poetry
+s - Speeches
+u - Unknown
+| - No attempt to code",Do no map '|'. 
+"LDR/06 == a or t and LDR/07 == a,c,d, or m | 008/34",Biography,--,--,--,:w1 a ld4l:[work subclass for form] .,code to bf2 or ld4l subclass mapping.,"{1,1}","# - No biographical material
+a - Autobiography
+b - Individual biography
+c - Collective biography
+d - Contains biographical information
+| - No attempt to code",Do no map '|'. 
+008/35-37,Language,--,--,--,:w1 dcterms:language <lexvo language URI for code in field>,MARC 3-letter language code to lexvo URI resolution.,"{1,1}","### - No information provided
+zxx - No linguistic content
+mul - Multiple languages
+sgn - Sign languages
+und - Undetermined
+[aaa] - Three-character alphabetic code",Map undetermined? No linguistic content?
+*008/38,Modified record,--,--,--,Admin Metadata (being worked on).,,"{1,1}",,
+,,--,,,,,,,
+008/35-37,Language ,--,,,,,,,
+008/38,Modified record ,--,,,,,,,
+008/39,Cataloging source ,--,,,,,,,
 006,Fixed-Length Data Elements,--,--,--,TBD,,"{0,1}",,
 007,Physical Description Fixed Field,--,--,--,TBD,,"{0,1}",,
-008,Fixed-Length Data Elements,--,--,--,Mapping being worked on (008 is a bit of an untangle).,,"{1,1}",,
-008,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
 010,Library of Congress Control Number: LC control number (NR) ,##,$a,--,:w1 owl:sameAs <generate lccn URI based off identifier>,URI generation from just the path/identifier portion. Prepend 'http://lccn.loc.gov/' to the identifier value.,"{0,1}",LCCN identifier. ,"This will probably require further normalization to make the URIs valid (removing spaces, link verifcation, etc.)."
 010,Library of Congress Control Number: NUCMC control number (R) ,##,$b,--,"w:1 bf:identifiedBy :id1 .
-    :id1 a bf:Identifier ;
+:id1 a bf:Identifier ;
     bf:source “National Union Catalog of Manuscript Collections” ;
     rdf:value “[field value]” .",n/a,"{0,n}","NUCMC identifier, ""ms"" followed by integers.",
 010,Library of Congress Control Number: Canceled/invalid LC control number (R),##,$z,--,--,n/a,"{0,n}",Identifier.,Ignore invalid identifiers for now (to be possbily changed).
@@ -107,13 +260,13 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 036,Original Study Number for Computer Data Files (NR) ,,,,TBD,,,,
 037,Source of Acquisition (R) ,,,,TBD,,,,
 038,Record Content Licensor (NR) ,,,,,,,,
-040,Cataloging Source (NR) - Original cataloging agency,##,a ,--,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Language of cataloging,##,b,--,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Transcribing Agency,##,c,--,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Modifying Agency,##,d,--,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Description Convetions,##,e,RDA,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Linkage,##,6,--,Admin Metadata (being worked on).,,,,
-040,Cataloging Source (NR) - Field link and sequence number,##,8,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Original cataloging agency,##,a ,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Language of cataloging,##,b,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Transcribing Agency,##,c,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Modifying Agency,##,d,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Description Convetions,##,e,RDA,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Linkage,##,6,--,Admin Metadata (being worked on).,,,,
+*040,Cataloging Source (NR) - Field link and sequence number,##,8,--,Admin Metadata (being worked on).,,,,
 041,Language Code (R) ,,,,TBD,,,,
 042,Authentication Code (NR) ,,,,TBD,,,,
 043,Geographic Area Code (NR) ,,,,TBD,,,,
@@ -122,16 +275,32 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 046,Special Coded Dates (R) ,,,,TBD,,,,
 047,Form of Musical Composition Code (R) ,,,,TBD,,,,
 048,Number of Musical Instruments or Voices Codes (R) ,,,,TBD,,,,
-050,Library of Congress Call Number (R) - Classification number (R) ,Ignore,a,--,":w1 bf:classification :class1 . 
+050,Library of Congress Call Number - Classification number (R) |  Item number (NR) ,?4 or ?# (ignore 1st ind.),a (only),--,":w1 bf:classification :class 1 . 
 :class1 a bf:ClassificationLcc ;
-    bf:classificationPortion ""[field value]"" .",,,,
-050,Library of Congress Call Number (R) - Item number (NR),Ignore,b,--,":i1 bf:classification :class 1 . 
+    bf:classificationPortion ""[subfield a field value]"" .",,"{0,n}","subfield a: [A-Za-z]{1,2}\d{1,5} ",
+050,Library of Congress Call Number - Classification number (R) |  Item number (NR) ,?4 or ?# (ignore 1st ind.),a | b,--,":i1 bf:classification :class 1 . 
 :class1 a bf:ClassificationLcc ;
     bf:classificationPortion ""[subfield a field value]"" ;
-    bf:itemPortion ""[field value]"" .",,,,
-050,Library of Congress Call Number (R) - Materials specified (NR),Ignore,3,--,TBD,,,,
-050,Library of Congress Call Number (R) - Linkage (NR) ,Ignore,6,--,TBD,,,,
-050,Library of Congress Call Number (R) - Field link and sequence number (R) ,Ignore,8,--,TBD,,,,
+    bf:itemPortion ""[subfield b value]"" .",strip leading punctuation of subfield b,"{0,n}","subfield a: [A-Za-z]{1,2}\d{1,5} 
+ 
+subfield b: /.{1}[A-Za-z]{1}\d{1,9}.*",
+050,Library of Congress Call Number (R) - Materials specified (NR),?4 or ?# (ignore 1st ind.),3,--,TBD. This is part of archival review. Will probably indicate this value goes to a different work or complex object part.,,,,
+050,Library of Congress Call Number (R) - Linkage (NR) ,?4 or ?# (ignore 1st ind.),6,--,TBD - not sure what we're going to do with these linkage fields.,,,,
+050,Library of Congress Call Number (R) - Field link and sequence number (R) ,?4 or ?# (ignore 1st ind.),8,--,TBD - not sure what we're going to do with these linkage fields.,,,,
+050,Library of Congress Call Number - Classification number (R) |  Item number (NR) ,?0 (ignore 1st ind.),a (only),--,":w1 bf:classification :class 1 . 
+:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion ""[subfield a field value]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,n}","subfield a: [A-Za-z]{1,2}\d{1,5} ",
+050,Library of Congress Call Number - Classification number (R) |  Item number (NR) ,?0 (ignore 1st ind.),a | b,--,":i1 bf:classification :class 1 . 
+:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion ""[subfield a field value]"" ;
+    bf:itemPortion ""[subfield b value]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",strip leading punctuation of subfield b,"{0,n}","subfield a: [A-Za-z]{1,2}\d{1,5} 
+ 
+subfield b: /.{1}[A-Za-z]{1}\d{1,9}.*",
+050,Library of Congress Call Number (R) - Materials specified (NR),?0 (ignore 1st ind.),3,--,TBD. This is part of archival review. Will probably indicate this value goes to a different work or complex object part.,,,,
+050,Library of Congress Call Number (R) - Linkage (NR) ,?0 (ignore 1st ind.),6,--,TBD - not sure what we're going to do with these linkage fields.,,,,
+050,Library of Congress Call Number (R) - Field link and sequence number (R) ,?0 (ignore 1st ind.),8,--,TBD - not sure what we're going to do with these linkage fields.,,,,
 051,"Library of Congress Copy, Issue, Offprint Statement (R) ",,,,TBD,,,,
 052,Geographic Classification (R) ,,,,TBD,,,,
 055,Classification Numbers Assigned in Canada (R) ,,,,,,,,
@@ -143,7 +312,193 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 072,Subject Category Code (R) ,,,,,,,,
 074,GPO Item Number (R) ,,,,,,,,
 080,Universal Decimal Classification Number (R) ,,,,,,,,
-082,Dewey Decimal Classification Number (R) ,,,,,,,,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),## or #4,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),## or #4,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),## or #4,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),## or #4,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),0# or 04,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""full"" .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),0# or 04,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""full"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),0# or 04,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""full"" .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),0# or 04,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""full"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),1# or 14,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""abridged"" .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),1# or 14,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""abridged"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),1# or 14,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""abridged"" .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),1# or 14,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""abridged"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),7# or 74,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""[value of subfield 2]"" .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),7# or 74,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""[value of subfield 2]"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),7# or 74,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""[value of subfield 2]"" .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),7# or 74,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""[value of subfield 2]"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),#0,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),#0,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),#0,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),#0,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),00,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""full"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),00,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""full"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),00,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""full"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),00,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""full"" .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),10,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""abridged"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),10,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""abridged"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),10,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""abridged"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),10,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""abridged"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R)  - Classification number (R),70,a,--,":w1 bf:classification :class2 .
+:class2 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""[value of subfield 2]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,n}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Item number (NR),70,b,--,":i1 bf:classification :class3 .
+:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:table ""[value of subfield 2]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
+082,Dewey Decimal Classification Number (R) - Standard or optional designation (NR),70,m,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""[value of subfield 2]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .","Map subfield m from code to value: a = ""standard"", b=""optional"".","{0,1}",1 letter code,
+082,Dewey Decimal Classification Number (R) - Edition number (NR),70,2,--,"(for any existing bf:Classification instances):
+:class a bf:ClassificationDdc ;
+    bf:classificationPortion ""[value of subfield a]"" ;
+    bf:edition ""[value of subfield 2] + [value of subfield m normalized]"" ;
+    bf:itemPortion ""[value of subfield b]"" ;
+    bf:table ""[value of subfield 2]"" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .",,"{0,1}",literals - integers and letters.,
 083,Additional Dewey Decimal Classification Number (R) ,,,,,,,,
 084,Other Classification Number (R) ,,,,,,,,
 085,Synthesized Classification Number Components (R) ,,,,,,,,
@@ -159,12 +514,66 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 240,Uniform Title (NR),,,,,,,,
 242,Translation of Title by Cataloging Agency (R),,,,,,,,
 243,Collective Uniform Title (NR),,,,,,,,
-245,Title Statement (NR) - Title,0?,a,--,"bf:Work 
+245,Title Statement (NR),0n,any subfield present,ISBD,":w1 ld4l:hasPreferredTitle :title1 ;
+:title1 a madsrdf:Title ;
+    rdfs:label “[subfields concatenated if exists: a,b,f,g,k,n,p,v]” ;
+    dcterms:language [Lexvo URI for resource language code in 008 or 046] ;
+    dcterms:hasPart :titlePart .
+:titlePart a madsrdf:NonSortElement ;
+    rdfs:label ""value of rdfs:label from 0 to n (value of ind2)"" .",Normalization of puncation around absence of $c (statement of responsibility). ,"{1,1}",Title string. Punctionation cleanup will be a holy terror.,
+245,Title Statement (NR) - Title,0n,a,ISBD,":title1 a madsrdf:Title ;
+    ...
+    dcterms:hasPart :titlePart1 .
+:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label ""value of subfield a"" .",Normalization of puncation (remove trailing from $a). ,"{1,1}",Title string.,Titles are a mess as they will lead to the creation of multiple resources and ranking issues. Need to confirm approach for LD4All WRT nonfiling characters.
+245,Title Statement (NR) - Remainder of title (NR),0n,b preceded by : (or portion of b with : further text),ISBD,":title1 a madsrdf:Title ;
+    ...
+    dcterms:hasPart :titlepart2 .
+:titlePart2 a madsrdf:SubtitleElement ;
+    rdfs:label ""[subfield b substring after : and before next : ; =]"" ;
+    ld4l:rank ""[order subfield b substrings after : and before next ; = or EOL as appear]""@xsd:integer.",Split based on ISBD punctuation. substrings starting with : are subtitles of existing Title instance that precedes it. substrings starting with ; or = are new Title instances. ,"{0,n}",Subtitle string.,Subtitle 
+245,Title Statement (NR) - Remainder of title (NR),0n,b preceded by ; (or portion of b with ; further text),ISBD,":w1 ld4l:hasTitle :title2 .
+:title2 a madsrdf:Title ;
+    rdfs:label ""[subfield b substring after ; and before next ; = or EOL]"" ;
+    ld4l:rank ""[order subfield b substrings after ; or = as appear]""@xsd:integer ;
+    dcterms:hasPart :titlePart1, :titlePart2 .
+:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label ""[subfield b substring after ; and before next : ; = or EOL - including subtitles in this substring]"" .
+:titlePart2 a madsrdf:SubtitleElement ; #if : appears after this ; preceded substring and before next ; = or EOL
+    rdfs:label ""[subfield b substring after : and before next : ; =]"" ;
+    ld4l:rank ""[order subfield b substrings after : and before next ; = or EOL as appear]""@xsd:integer.",,"{0,n}",Subtitle string.,
+245,Title Statement (NR) - Remainder of title (NR),0n,b preceded by = (or portion of b with = further text),ISBD,":w1 ld4l:hasTitle :title2 .
+:title2 a madsrdf:ParallelTitle ;
+    rdfs:label ""[subfield b substring after = and before ; = or EOL]"" ;
+    ld4l:rank ""[order subfield b substrings after ; or = as appear]""@xsd:integer ;
+    dcterms:hasPart :titlePart1, :titlePart2 .
+:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label ""[subfield b substring after = and before next ; = or EOL - including subtitles in this substring]"" .
+:titlePart2 a madsrdf:SubtitleElement ; #if :: appears after this = preceded substring and before next ; = or EOL
+    rdfs:label ""[subfield b substring after : and before next : ; =]"" ;
+    ld4l:rank ""[order subfield b substrings after : and before next ; = or EOL as appear]""@xsd:integer.",,"{0,n}",Subtitle string.,
+245,"Title Statement (NR) - Statement of responsibility, etc. (NR)",0n,c,"ISBD, RDA","bf:Work hasInstance bf:Instance .
+bf:Instance bf:responsibilityStatement ""[subfield c value]"" .",,"{0,1}",Statement of responsibility string.,Applies to the Instance.
+245,Title Statement (NR) - Inclusive dates (NR) ,0n,f,ISBD,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Bulk dates (NR) ,0n,g,ISBD,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Medium (NR),0n,h,"ISBD, AACR*",Ignore for now. May be mapped to some sort of container/carrier field later.,,,,
+245,Title Statement (NR) - Form (R),0n,k (appears first and no subfield a),ISBD,":title1 a madsrdf:Title ;
+    ...
+    dcterms:hasPart :titlePart1 .
+:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label ""value of subfield k"" .",Normalization of puncation (remove trailing from $k). ,"{1,1}",Archival material title string.,This applies if the subfield k appears first / there is no subfield a.
+245,Title Statement (NR) - Form (R),0n,k (does not appear first and there is subfield a),ISBD,,,"{1,1}",Archival material title string.,This applies if the subfield k appears first / there is no subfield a.
+245,Title Statement (NR) - Number of part/section of a work (R),0n,n,ISBD,TBD,,,,
+245,Title Statement (NR) - Name of part/section of a work (R),0n,p,ISBD,TBD,,,,
+245,Title Statement (NR) - Version (NR) ,0n,s,ISBD,TBD,,,,
+245,Title Statement (NR) - Linkage (NR),0n,6,ISBD,TBD,,,,
+245,Title Statement (NR) -  Field link and sequence number (R),0n,8,ISBD,TBD,,,,
+245,Title Statement (NR) - Title,1n,a,ISBD,"bf:Work 
     ld4l:hasPreferredTitle :title1 ;
 :title1 a madsrdf:Title ;
     rdfs:label “[field value concatenated with subfield b value if exists]” ;
     dcterms:language [Lexvo URI for resource language code in 008] .",Remove trailing punctionation? To be determined.,"{1,1}",Title string.,Titles are a mess as they will lead to the creation of multiple resources and ranking issues. Need to confirm approach for LD4All WRT nonfiling characters.
-245,Title Statement (NR) - Remainder of title (NR),0?,b,--,"bf:Work 
+245,Title Statement (NR) - Remainder of title (NR),1n,b,ISBD,"bf:Work 
     ld4l:hasPreferredTitle :title1 ;
 :title1 a madsrdf:Title ;
     rdfs:label “[field value concatenated after subfield a value]” ;
@@ -174,16 +583,16 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 :titlepart1 a madsrdf:SubtitleElement ;
     rdfs:label ""[field value]"" ;
     vivo:rank ""[order appeared in 245 integer]""@xsd:integer .",Remove trailing punctionation? To be determined.,"{0,n}",Subtitle string.,Titles are a mess as they will lead to the creation of multiple resources and ranking issues. Need to confirm approach for LD4All WRT nonfiling characters.
-245,"Title Statement (NR) - Statement of responsibility, etc. (NR)",0?,c,,"bf:Work hasInstance bf:Instance . bf:Instance bf:responsibilityStatement ""[field value]"" .",Remove trailing punctionation? To be determined.,"{0,1}",Statement of responsibility string.,Applies to the Instance.
-245,Title Statement (NR) - Inclusive dates (NR) ,0?,f,,TBD - part of Archival work discussions.,,,,
-245,Title Statement (NR) - Bulk dates (NR) ,0?,g,,TBD - part of Archival work discussions.,,,,
-245,Title Statement (NR) - Medium (NR),0?,h,AACR2,Ignore for now. May be mapped to some sort of container/carrier field later.,,,,
-245,Title Statement (NR) - Form (R),0?,k,,,,,,
-245,Title Statement (NR) - Number of part/section of a work (R),0?,n,,TBD,,,,
-245,Title Statement (NR) - Name of part/section of a work (R),0?,p,,TBD,,,,
-245,Title Statement (NR) - Version (NR) ,0?,s,,TBD,,,,
-245,Title Statement (NR) - Linkage (NR),0?,6,,TBD,,,,
-245,Title Statement (NR) -  Field link and sequence number (R),0?,8,,TBD,,,,
+245,"Title Statement (NR) - Statement of responsibility, etc. (NR)",1n,c,"ISBD, RDA","bf:Work hasInstance bf:Instance . bf:Instance bf:responsibilityStatement ""[field value]"" .",Remove trailing punctionation? To be determined.,"{0,1}",Statement of responsibility string.,Applies to the Instance.
+245,Title Statement (NR) - Inclusive dates (NR) ,1n,f,ISBD,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Bulk dates (NR) ,1n,g,ISBD,TBD - part of Archival work discussions.,,,,
+245,Title Statement (NR) - Medium (NR),1n,h,"ISBD, AACR*",Ignore for now. May be mapped to some sort of container/carrier field later.,,,,
+245,Title Statement (NR) - Form (R),1n,k,ISBD,,,,,
+245,Title Statement (NR) - Number of part/section of a work (R),1n,n,ISBD,TBD,,,,
+245,Title Statement (NR) - Name of part/section of a work (R),1n,p,ISBD,TBD,,,,
+245,Title Statement (NR) - Version (NR) ,1n,s,ISBD,TBD,,,,
+245,Title Statement (NR) - Linkage (NR),1n,6,ISBD,TBD,,,,
+245,Title Statement (NR) -  Field link and sequence number (R),1n,8,ISBD,TBD,,,,
 246,Varying Form of Title (R),,,,,,,,
 247,Former Title (R),,,,,,,,
 250,Edition Statement (R) ,,,,,,,,
@@ -203,11 +612,11 @@ LDR20-23,Various record / MARC specifications for validity of record encoding.,-
 260,"Publication, Distribution, etc. (Imprint) - Date of publication, distribution, etc. (R)",##,c,non-RDA,":in1 a ld4l:PublicationActivity ;
     dcterms:date ""value of subfield"" .","Will require date normalization. Strip trailing punctuation, split based of commas sometimes. Needs date parsing patterns.","{0,n}","String - varies from ""1999"" to ""1999, 2002"" to ""April 15, 1999"".",
 260,"Publication, Distribution, etc. (Imprint) - Place of manufacture (R)",##,e,non-RDA,,,"{0,n}",,
-260,"Publication, Distribution, etc. (Imprint) (R) ",##,$f - Manufacturer (R),non-RDA,,,,,
-260,"Publication, Distribution, etc. (Imprint) (R) ",##,$g - Date of manufacture (R),non-RDA,,,,,
-260,"Publication, Distribution, etc. (Imprint) (R) ",##,$3 - Materials specified (NR),non-RDA,,,,,
-260,"Publication, Distribution, etc. (Imprint) (R) ",##,$6 - Linkage (NR),non-RDA,,,,,
-260,"Publication, Distribution, etc. (Imprint) (R) ",##,$8 - Field link and sequence number (R),non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Manufacturer (R)",##,f,non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Date of manufacture (R)",##,g,non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Materials specified (NR)",##,3,non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Linkage (NR)",##,6,non-RDA,,,,,
+260,"Publication, Distribution, etc. (Imprint) - Field link and sequence number (R)",##,8,non-RDA,,,,,
 260,"Publication, Distribution, etc. (Imprint) (R) ",#2,,non-RDA,,,,,
 260,"Publication, Distribution, etc. (Imprint) (R) ",#3,,non-RDA,,,,,
 261,Imprint Statement of Films (Pre-AACR 1 Revised) (NR),,,,,,,,
