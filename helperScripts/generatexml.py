@@ -38,7 +38,7 @@ def main():
         if args.MARCXML:
             generateMARCXML(args.biMARC, args.MARCXML)
         else:
-            MARCXML = args.biMARC + '.xml'
+            MARCXML = args.biMARC.replace('.mrc', '.marc.xml')
             generateMARCXML(args.biMARC, MARCXML)
 
     if args.turtleRDF:
