@@ -1,0 +1,84 @@
+@prefix bf: <http://bibframe.org/vocab/> .
+@prefix cul: <http://cornell.edu/test/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ld4l: <http://bib.ld4l.org/ontology/> .
+@prefix lexvo: <http://lexvo.org/id/iso639-3/> .
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+cul:1413966 a bf:Text, bf:Work ;
+    bf:classification cul:class1, cul:class3 ;
+    bf:hasInstance cul:1413966instance1 ;
+    bf:identifiedBy cul:id1, cul:id2, cul:id3, cul:id4 ;
+    ld4l:illustrativeContent ld4l:FrontispieceFacsimilesContent ;
+    bf:translationOf cul:work2 ;
+    dcterms:language lexvo:eng ;
+    ld4l:hasPreferredTitle :title2 ;
+    owl:sameAs <http://lccn.loc.gov/40011376> .
+cul:1413966instance1 a bf:Instance ;
+    bf:classification cul:class2 ;
+    bf:dimensions "21 cm" ;
+    bf:extent cul:ext1 ;
+    bf:issuance ld4l:Monograph ;
+    bf:responsibilityStatement "translated into alliterative verse with a critical introduction by Charles W. Kennedy ...." .
+    bf:supplementaryContent ld4l:BibliographyContent ;
+    ld4l:hasActivity cul:act1 ;
+    ld4l:hasPreferredTitle :title3 .
+cul:act1 a ld4l:PublicationActivity ;
+    bf:agent <http://id.loc.gov/rwo/agents/n80126136> ;
+    bf:place cul:place1 ;
+    bf:place cul:place2 ;
+    dcterms:date "1940"^^<http://id.loc.gov/datatypes/edtf/EDTF> .
+cul:class1 a bf:ClassificationLcc ;
+    bf:classificationPortion "PR1583" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .
+cul:class2 a bf:ClassificationLcc ;
+    bf:classificationPortion "PR1583" ;
+    bf:itemPortion ".K4" ;
+    bf:source <http://id.loc.gov/rwo/agents/n78089035> .
+cul:class3 a bf:ClassificationDdc ;
+    bf:classificationPortion "829.3" .
+cul:ext1 a bf:Extent ;
+    bf:unit cul:page ;
+    rdf:value "lxv, 121" .
+cul:id1 a ld4l:LocalIlsIdentifier ;
+    rdf:value "1413966" ;
+    bf:source <http://id.loc.gov/rwo/agents/n85179829> .
+cul:id2 a ld4l:Identifier ;
+    bf:source <http://id.loc.gov/rwo/agents/n78015294> ;
+    rdf:value "2613949" .
+cul:id3 a ld4l:Identifier ;
+    bf:source "CStRLIN"^^ld4l:MARCOrgCode ;
+    rdf:value "NYCXA0009800B" .
+cul:id4 a ld4l:Identifier ;
+    bf:source <http://id.loc.gov/rwo/agents/n85179829> ;
+    rdf:value "notisAGM8694" .
+cul:place1 a prov:Location ;
+    rdfs:label "New York" ;
+    owl:sameAs <http://sws.geonames.org/5128581/> .
+cul:place1 a prov:Location ;
+    rdfs:label "London" .
+cul:title1 a madsrdf:Title ;
+    dcterms:hasPart cul:titlePart1 ;
+    dcterms:language lexvo:ang ;
+    rdfs:label "Beowulf." .
+cul:titlePart1 a madsrdf:MainTitleElement ;
+    rdfs:label "Beowulf." .
+cul:title2 a madsrdf:Title ;
+    dcterms:hasPart cul:titlePart2 ;
+    dcterms:language lexvo:eng ;
+    rdfs:label "Beowulf." .
+cul:titlePart2 a madsrdf:MainTitleElement ;
+    rdfs:label "Beowulf." .
+cul:title3 a madsrdf:Title ;
+    dcterms:hasPart cul:titlePart3 ;
+    dcterms:language lexvo:eng ;
+    rdfs:label "Beowulf, the oldest English epic" .
+cul:titlePart3 a madsrdf:MainTitleElement ;
+    rdfs:label "Beowulf, the oldest English epic" .
+cul:work2 a bf:Work ;
+    ld4l:hasPreferredTitle cul:title1 ;
+    dcterms:language lexvo:ang .
