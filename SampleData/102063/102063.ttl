@@ -1,5 +1,14 @@
+# Not yet handled/decided in LD4All Sprint work, on which this is based:
+# admin metadata (so not included)
+# holdings or bf:Item-level information
+# no carrier, media information (not present in non-RDA MARC record)
+# no copyright date in simple record
+# Issuance may/may not stay on Work level.
+# Some LD4L values are named individuals yet to be created in the ontology.
+# Entity resolution to external datasets only included when the labels are an exact match.
+
 @prefix bf: <http://bibframe.org/vocab/> .
-@prefix cul: <http://cornell.edu/test/> .
+@prefix cul: <http://cornell.edu/examplebibs/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ld4l: <http://bib.ld4l.org/ontology/> .
 @prefix lexvo: <http://lexvo.org/id/iso639-3/> .
@@ -13,8 +22,6 @@ cul:102063 a bf:Text, bf:Work ;
     bf:classification cul:class1, cul:class3 ;
     bf:hasInstance cul:102063instance1 ;
     bf:identifiedBy cul:id1, cul:id2, cul:id3, cul:id4 ;
-    bf:issuance ld4l:Monograph ;
-    bf:supplementaryContent ld4l:SupplementaryBibliography ;
     dcterms:language lexvo:eng ;
     dcterms:subject <http://id.loc.gov/authorities/subjects/sh85023137> ;
     dcterms:subject <http://id.worldcat.org/fast/853831> ;
@@ -23,14 +30,18 @@ cul:102063 a bf:Text, bf:Work ;
     ld4l:illustrativeContent ld4l:IllustrationsContent ;
     owl:sameAs <http://lccn.loc.gov/56010158/L> .
 cul:102063instance1 a bf:Instance ;
+    bf:instanceOf cul:102063 ;
     bf:classification cul:class2 ;
-    bf:dimensions "27 cm." ;
+    bf:issuance ld4l:Monograph ;
+    bf:supplementaryContent ld4l:SupplementaryBibliography ;
+    bf:dimensions "27 cm" ;
     bf:extent cul:ext1 ;
     bf:responsibilityStatement "Sponsored by the American College of Chest Physicians. Editorial board: Burgess L. Gordon, chairman, editor-in-chief, Albert H. Andrews [and others]" ;
     bf:supplementaryContent ld4l:BibliographyContent ;
     ld4l:hasActivity cul:act1 .
 cul:act1 a ld4l:PublicationActivity ;
     bf:agent <http://id.loc.gov/rwo/agents/n83008217> ;
+    ld4l:hasActivityStatement "New York, Grune & Stratton, 1957." ;
     bf:place cul:place1 ;
     dcterms:date "1957"^^<http://id.loc.gov/datatypes/edtf/EDTF> .
 cul:act2 a ld4l:EditingActivity ;
@@ -49,14 +60,14 @@ cul:class3 a bf:ClassificationDdc ;
 cul:ext1 a bf:Extent ;
     bf:unit cul:page ;
     rdf:value "759" .
-cul:id1 a ld4l:LocalIlsIdentifier ;
-    bf:source "OCoLC" ;
+cul:id1 a ld4l:Identifier ;
+    bf:source <http://id.loc.gov/rwo/agents/n78015294> ;
     rdf:value "1345399" .
-cul:id2 a ld4l:LocalIlsIdentifier ;
-    bf:source "CStRLIN" ;
+cul:id2 a ld4l:Identifier ;
+    bf:source "CStRLIN"^^ld4l:MARCOrgCode ;
     rdf:value "NYCX86B63464" .
-cul:id3 a ld4l:LocalIlsIdentifier ;
-    bf:source "NIC" ;
+cul:id3 a ld4l:Identifier ;
+    bf:source <http://id.loc.gov/rwo/agents/n85179829> ;
     rdf:value "notisAAL3258" .
 cul:id4 a ld4l:LocalIlsIdentifier ;
     rdf:value "102063" ;
