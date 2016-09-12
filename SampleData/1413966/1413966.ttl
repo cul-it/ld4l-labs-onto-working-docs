@@ -16,17 +16,17 @@ cul:1413966 a bf:Text, bf:Work ;
     ld4l:illustrativeContent ld4l:FrontispieceFacsimilesContent ;
     bf:translationOf cul:work2 ;
     dcterms:language lexvo:eng ;
-    ld4l:hasPreferredTitle :title2 ;
+    ld4l:hasPreferredTitle cul:title2 ;
     owl:sameAs <http://lccn.loc.gov/40011376> .
 cul:1413966instance1 a bf:Instance ;
     bf:classification cul:class2 ;
     bf:dimensions "21 cm" ;
     bf:extent cul:ext1 ;
     bf:issuance ld4l:Monograph ;
-    bf:responsibilityStatement "translated into alliterative verse with a critical introduction by Charles W. Kennedy ...." .
+    bf:responsibilityStatement "translated into alliterative verse with a critical introduction by Charles W. Kennedy ...." ;
     bf:supplementaryContent ld4l:BibliographyContent ;
     ld4l:hasActivity cul:act1 ;
-    ld4l:hasPreferredTitle :title3 .
+    ld4l:hasPreferredTitle cul:title3 .
 cul:act1 a ld4l:PublicationActivity ;
     bf:agent <http://id.loc.gov/rwo/agents/n80126136> ;
     bf:place cul:place1 ;

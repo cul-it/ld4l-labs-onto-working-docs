@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:bf="http://bibframe.org/vocab/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:ld4l="http://bib.ld4l.org/ontology/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://cornell.edu/test/class2">
+    <bf:classificationPortion>PR1583</bf:classificationPortion>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:itemPortion>.K4</bf:itemPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/1413966">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Text"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id4"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id3"/>
+    <ld4l:illustrativeContent rdf:resource="http://bib.ld4l.org/ontology/FrontispieceFacsimilesContent"/>
+    <ld4l:hasPreferredTitle rdf:resource="http://cornell.edu/test/title2"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id1"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Work"/>
+    <bf:identifiedBy rdf:resource="http://cornell.edu/test/id2"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class3"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class1"/>
+    <owl:sameAs rdf:resource="http://lccn.loc.gov/40011376"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+    <bf:translationOf rdf:resource="http://cornell.edu/test/work2"/>
+    <bf:hasInstance rdf:resource="http://cornell.edu/test/1413966instance1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/1413966instance1">
+    <bf:supplementaryContent rdf:resource="http://bib.ld4l.org/ontology/BibliographyContent"/>
+    <ld4l:hasPreferredTitle rdf:resource="http://cornell.edu/test/title3"/>
+    <bf:dimensions>21 cm</bf:dimensions>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Instance"/>
+    <bf:extent rdf:resource="http://cornell.edu/test/ext1"/>
+    <bf:issuance rdf:resource="http://bib.ld4l.org/ontology/Monograph"/>
+    <bf:classification rdf:resource="http://cornell.edu/test/class2"/>
+    <bf:responsibilityStatement>translated into alliterative verse with a critical introduction by Charles W. Kennedy ....</bf:responsibilityStatement>
+    <ld4l:hasActivity rdf:resource="http://cornell.edu/test/act1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id3">
+    <rdf:value>NYCXA0009800B</rdf:value>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/Identifier"/>
+    <bf:source rdf:datatype="http://bib.ld4l.org/ontology/MARCOrgCode">CStRLIN</bf:source>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/work2">
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/ang"/>
+    <ld4l:hasPreferredTitle rdf:resource="http://cornell.edu/test/title1"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Work"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/titlePart2">
+    <rdfs:label>Beowulf.</rdfs:label>
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#MainTitleElement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class3">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationDdc"/>
+    <bf:classificationPortion>829.3</bf:classificationPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/title1">
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Title"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/ang"/>
+    <rdfs:label>Beowulf.</rdfs:label>
+    <dcterms:hasPart rdf:resource="http://cornell.edu/test/titlePart1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id2">
+    <rdf:value>2613949</rdf:value>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78015294"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/Identifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/title2">
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Title"/>
+    <rdfs:label>Beowulf.</rdfs:label>
+    <dcterms:hasPart rdf:resource="http://cornell.edu/test/titlePart2"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id1">
+    <rdf:value>1413966</rdf:value>
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n85179829"/>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/LocalIlsIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/id4">
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n85179829"/>
+    <rdf:value>notisAGM8694</rdf:value>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/Identifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/place1">
+    <rdfs:label>New York</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/ns/prov#Location"/>
+    <rdfs:label>London</rdfs:label>
+    <owl:sameAs rdf:resource="http://sws.geonames.org/5128581/"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/ext1">
+    <rdf:type rdf:resource="http://bibframe.org/vocab/Extent"/>
+    <bf:unit rdf:resource="http://cornell.edu/test/page"/>
+    <rdf:value>lxv, 121</rdf:value>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/act1">
+    <dcterms:date rdf:datatype="http://id.loc.gov/datatypes/edtf/EDTF">1940</dcterms:date>
+    <rdf:type rdf:resource="http://bib.ld4l.org/ontology/PublicationActivity"/>
+    <bf:place rdf:resource="http://cornell.edu/test/place1"/>
+    <bf:place rdf:resource="http://cornell.edu/test/place2"/>
+    <bf:agent rdf:resource="http://id.loc.gov/rwo/agents/n80126136"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/title3">
+    <rdfs:label>Beowulf, the oldest English epic</rdfs:label>
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Title"/>
+    <dcterms:hasPart rdf:resource="http://cornell.edu/test/titlePart3"/>
+    <dcterms:language rdf:resource="http://lexvo.org/id/iso639-3/eng"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/titlePart3">
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#MainTitleElement"/>
+    <rdfs:label>Beowulf, the oldest English epic</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/class1">
+    <bf:source rdf:resource="http://id.loc.gov/rwo/agents/n78089035"/>
+    <rdf:type rdf:resource="http://bibframe.org/vocab/ClassificationLcc"/>
+    <bf:classificationPortion>PR1583</bf:classificationPortion>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://cornell.edu/test/titlePart1">
+    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#MainTitleElement"/>
+    <rdfs:label>Beowulf.</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
