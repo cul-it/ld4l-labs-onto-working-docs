@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
+    <leader>01730cam a22004931  4500</leader>
+    <controlfield tag="001">1413966</controlfield>
+    <controlfield tag="005">20160620043557.0</controlfield>
+    <controlfield tag="008">880815s1940    nyuh     b    000 0 eng  </controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">   40011376 </subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CStRLIN)NYCXA0009800B</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(NIC)notisAGM8694</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)2613949</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">1413966</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="c">SAZTEC</subfield>
+      <subfield code="d">NIC</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="041">
+      <subfield code="a">eng</subfield>
+      <subfield code="h">ang</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="050">
+      <subfield code="a">PR1583</subfield>
+      <subfield code="b">.K4</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="082">
+      <subfield code="a">829.3</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="130">
+      <subfield code="a">Beowulf.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Beowulf, the oldest English epic;</subfield>
+      <subfield code="c">translated into alliterative verse with a critical introduction by Charles W. Kennedy ....</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York,</subfield>
+      <subfield code="a">London [etc.]</subfield>
+      <subfield code="b">Oxford university press,</subfield>
+      <subfield code="c">1940.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">lxv, 121 p.</subfield>
+      <subfield code="b">front. (facsim.)</subfield>
+      <subfield code="c">21 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">"A selected bibliography": p. [103]-111.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="600">
+      <subfield code="a">Beowulf,</subfield>
+      <subfield code="c">King of the Geats</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="600">
+      <subfield code="a">Grendel</subfield>
+      <subfield code="c">(Monster)</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="630">
+      <subfield code="a">Beowulf.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Scandinavia</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Heroes</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Monsters</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Dragons</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="7" tag="600">
+      <subfield code="a">Beowulf,</subfield>
+      <subfield code="c">King of the Geats.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01742747</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="7" tag="600">
+      <subfield code="a">Grendel</subfield>
+      <subfield code="c">(Monster)</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01742748</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="7" tag="630">
+      <subfield code="a">Beowulf.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01356023</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Dragons.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00897397</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Heroes.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00955558</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Monsters.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01025752</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">Scandinavia.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01242804</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Poetry.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423828</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Kennedy, Charles W.</subfield>
+      <subfield code="q">(Charles William),</subfield>
+      <subfield code="d">1882-1969.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="899">
+      <subfield code="a">tsin20091130</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="905">
+      <subfield code="a">19910617120000.0</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="948">
+      <subfield code="a">20091221</subfield>
+      <subfield code="b">w</subfield>
+      <subfield code="d">batch</subfield>
+      <subfield code="e">lts</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="948">
+      <subfield code="a">20160620</subfield>
+      <subfield code="b">m</subfield>
+      <subfield code="d">batch</subfield>
+      <subfield code="e">lts</subfield>
+      <subfield code="x">WorldShare</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="950">
+      <subfield code="a">PR1583</subfield>
+      <subfield code="b">.K35</subfield>
+      <subfield code="l">OLIN</subfield>
+      <subfield code="x">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="976">
+      <subfield code="p">31924013339423</subfield>
+    </datafield>
+  </record>
+</collection>
